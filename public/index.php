@@ -2,6 +2,7 @@
 require_once dirname(__DIR__) . '/src/bootstrap.php';
 $connected = !empty($_SESSION['user_id']);
 $debug = debug_enabled();
+$oauthCancelled = isset($_GET['oauth']) && is_string($_GET['oauth']) && $_GET['oauth'] === 'cancelled';
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,6 +26,9 @@ $debug = debug_enabled();
 </header>
 
 <main>
+    <?php if ($oauthCancelled): ?>
+    <p id="oauth-status" role="status"><?= htmlspecialchars('Google sign-in was cancelled. You can try again whenever you\'re ready.', ENT_QUOTES, 'UTF-8') ?></p>
+    <?php endif; ?>
     <p id="status" role="status">
         <?= $connected ? 'Loading…' : 'Connect Gmail to get started.' ?>
     </p>

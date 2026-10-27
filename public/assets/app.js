@@ -8,6 +8,12 @@ const debug = document.body.dataset.debug === "1";
 const statusEl = $("#status");
 const actionsEl = $("#actions");
 
+if (new URLSearchParams(location.search).get("oauth") === "cancelled") {
+    const url = new URL(location.href);
+    url.searchParams.delete("oauth");
+    history.replaceState(history.state, "", url);
+}
+
 function el(tag, text = "", className = "") {
     const node = document.createElement(tag);
     node.textContent = text;           // textContent: email data is never parsed as HTML

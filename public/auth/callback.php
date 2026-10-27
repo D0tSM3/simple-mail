@@ -3,6 +3,10 @@ declare(strict_types=1);
 require_once dirname(__DIR__, 2) . '/src/bootstrap.php';
 
 if (isset($_GET['error'])) {
+    if (is_string($_GET['error']) && $_GET['error'] === 'access_denied') {
+        header('Location: /?oauth=cancelled', true, 302);
+        exit;
+    }
     plain_error(400, 'Google authorization was not completed.');
 }
 

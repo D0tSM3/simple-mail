@@ -89,9 +89,17 @@ function db(): PDO
 
 function googleClient(): Client
 {
+    $clientId = trim((string) env('GOOGLE_CLIENT_ID'));
+    $clientSecret = trim((string) env('GOOGLE_CLIENT_SECRET'));
+    if ($clientId === '' || $clientSecret === ''
+        || $clientId === 'your-client-id'
+        || $clientSecret === 'your-client-secret') {
+        throw new AppException(503, 'OAUTH_NOT_CONFIGURED', 'Google sign-in is not configured.');
+    }
+
     $client = new Client();
-    $client->setClientId((string) env('GOOGLE_CLIENT_ID'));
-    $client->setClientSecret((string) env('GOOGLE_CLIENT_SECRET'));
+    $client->setClientId($clientId);
+    $client->setClientSecret($clientSecret);
     $client->setRedirectUri(env('APP_URL', 'http://localhost:8080') . '/auth/callback.php');
     $client->setScopes(['openid', 'email', GMAIL_SCOPE]);
     $client->setAccessType('offline');

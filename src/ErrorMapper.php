@@ -34,6 +34,7 @@ final class ErrorMapper
             'RECONNECT_REQUIRED' => [401, 'Gmail authorization needs to be reconnected.'],
             'TOKEN_REFRESH_FAILED' => [502, 'Could not refresh Gmail authorization.'],
             'TOKEN_STORAGE_UNAVAILABLE' => [500, 'Secure token storage is unavailable.'],
+            'OAUTH_NOT_CONFIGURED' => [503, 'Google sign-in is not configured.'],
         ];
         [$status, $message] = $safe[$e->errorCode] ?? [500, 'An unexpected server error occurred.'];
         $retryable = $e->errorCode === 'TOKEN_REFRESH_FAILED' && $e->retryable;
