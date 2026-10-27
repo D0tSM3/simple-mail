@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f5f7fb; color: #1f2937; font: 16px/1.5 system-ui, Arial, sans-serif; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+         padding: 16px 24px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+header h1 { margin: 0; font-size: 1.35rem; }
+main { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+a { color: #1d4ed8; }
+.btn, button { padding: 9px 14px; font: inherit; border: 1px solid #cbd5e1; border-radius: 8px;
+               background: #fff; color: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
+.btn:hover, button:hover:not(:disabled) { background: #eff6ff; }
+button:disabled { cursor: not-allowed; opacity: .5; }
+input, select { padding: 9px 12px; font: inherit; }
+input[type=search] { flex: 1; min-width: 200px; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 16px; }
+#actions { display: flex; gap: 8px; margin-bottom: 12px; }
+.mail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+#email-list, #preview, #lab { min-width: 0; padding: 16px; background: #fff;
+                              border: 1px solid #e5e7eb; border-radius: 12px; }
+#lab { margin-top: 24px; }
+#lab h2 { margin-top: 0; }
+#lab-log { background: #0f172a; color: #e2e8f0; padding: 12px; border-radius: 8px;
+           min-height: 80px; max-height: 260px; overflow: auto; white-space: pre-wrap; font-size: .85rem; }
+.email-item { display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+              width: 100%; margin-bottom: 8px; text-align: left; }
+.email-item span, .email-item small, #preview p { overflow-wrap: anywhere; }
+.email-item.unread { border-left: 4px solid #1d4ed8; }
+.email-item:not(.unread) strong { font-weight: 500; }
+#preview > button { margin: 4px 0 8px; }
+.pager { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+.muted { color: #64748b; font-size: .9rem; }
+@media (max-width: 700px) { .mail-layout { grid-template-columns: 1fr; } }

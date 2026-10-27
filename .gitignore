@@ -1,0 +1,31 @@
+.env
+.env.*
+!.env.example
+vendor/
+composer.phar
+
+# Runtime output
+*.log
+/logs/
+/storage/logs/
+/tests/output/
+
+# Local databases and dumps (keep database/schema.sql tracked)
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+*.sql.zip
+*.bak
+
+# Windows and editor artifacts
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
